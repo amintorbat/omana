@@ -1,0 +1,16 @@
+{
+  "brand": {
+    "name": "اومانا"
+  },
+  "links": [
+    { "href": "#services", "label": "خدمات" },
+    { "href": "#why-oman", "label": "چرا عمان؟" },
+    { "href": "#process", "label": "فرآیند" },
+    { "href": "#faq", "label": "سوالات" },
+    { "href": "#contact", "label": "ارتباط" }
+  ],
+  "cta": {
+    "href": "#contact",
+    "label": "رزرو جلسه"
+  }
+}
