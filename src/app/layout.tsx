@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   },
   description:
     "اومانا پلتفرم معتمد برندها و سرمایه‌گذاران ایرانی برای ثبت شرکت، جذب سرمایه و توسعه عملیات در عمان است.",
+  authors: [
+    {
+      name: "Torbate Esfahani Agency",
+      url: "https://torbatesfahaniagency.ir",
+    },
+  ],
   keywords: [
     "سرمایه گذاری عمان",
     "ثبت شرکت در عمان",

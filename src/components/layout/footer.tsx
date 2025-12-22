@@ -26,8 +26,21 @@ export const Footer = () => {
           <p className="mt-1">{contact.email}</p>
         </div>
       </div>
-      <div className="border-t border-white/60 bg-white/80 text-center text-xs text-oman-slate/60 py-3">
-        © {new Date().getFullYear()} {site.brand.name}. {site.footer.rights}
+      <div className="border-t border-white/60 bg-white/80 py-3 text-center text-xs text-oman-slate/60">
+        <p>
+          © {new Date().getFullYear()} {site.brand.name}. {site.footer.rights}
+        </p>
+        <p className="mt-1 text-[11px] text-oman-slate/50">
+          Design &amp; Development by{" "}
+          <a
+            href="https://torbatesfahaniagency.ir"
+            target="_blank"
+            rel="noreferrer"
+            className="text-oman-slate/60 hover:text-oman-green"
+          >
+            Torbate Esfahani Agency
+          </a>
+        </p>
       </div>
     </footer>
   );
