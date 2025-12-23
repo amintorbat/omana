@@ -6,12 +6,12 @@ import { isAdminAuthenticated } from "@/lib/cms-auth";
 import { getSessionTokenFromRequest } from "@/lib/cms-session";
 import { prisma } from "@/lib/prisma";
 
-type RouteContext = { params: { id: string } };
+type RouteContext = { params: Promise<{ id: string }> };
 
 export const GET = async (_req: NextRequest, { params }: RouteContext) => {
   try {
-    const id = Number(params.id);
-    const item = await prisma.post.findUnique({ where: { id } });
+    const { id } = await params;
+    const item = await prisma.post.findUnique({ where: { id: Number(id) } });
     const token = getSessionTokenFromRequest(_req);
     const isAdmin = isAdminAuthenticated(token);
 
@@ -33,13 +33,13 @@ export const PUT = async (req: NextRequest, { params }: RouteContext) => {
   }
 
   try {
-    const id = Number(params.id);
+    const { id } = await params;
     const body = await req.json();
     const publishedAt = body.publishedAt ? new Date(body.publishedAt) : null;
     const parsedPublishedAt =
       publishedAt && Number.isNaN(publishedAt.getTime()) ? null : publishedAt;
     const item = await prisma.post.update({
-      where: { id },
+      where: { id: Number(id) },
       data: {
         title: body.title ?? "",
         slug: body.slug ?? "",
@@ -64,8 +64,8 @@ export const DELETE = async (_req: NextRequest, { params }: RouteContext) => {
   }
 
   try {
-    const id = Number(params.id);
-    await prisma.post.delete({ where: { id } });
+    const { id } = await params;
+    await prisma.post.delete({ where: { id: Number(id) } });
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false });

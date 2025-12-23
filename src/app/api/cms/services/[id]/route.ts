@@ -6,12 +6,13 @@ import { isAdminAuthenticated } from "@/lib/cms-auth";
 import { getSessionTokenFromRequest } from "@/lib/cms-session";
 import { prisma } from "@/lib/prisma";
 
-type RouteContext = { params: { id: string } };
+type RouteContext = { params: Promise<{ id: string }> };
 
 export const GET = async (_req: NextRequest, { params }: RouteContext) => {
   try {
-    const id = Number(params.id);
-    const item = await prisma.service.findUnique({ where: { id } });
+    const { id } = await params;
+    const parsedId = Number(id);
+    const item = await prisma.service.findUnique({ where: { id: parsedId } });
     const token = getSessionTokenFromRequest(_req);
     const isAdmin = isAdminAuthenticated(token);
 
@@ -33,10 +34,11 @@ export const PUT = async (req: NextRequest, { params }: RouteContext) => {
   }
 
   try {
-    const id = Number(params.id);
+    const { id } = await params;
+    const parsedId = Number(id);
     const body = await req.json();
     const item = await prisma.service.update({
-      where: { id },
+      where: { id: parsedId },
       data: {
         title: body.title ?? "",
         slug: body.slug ?? "",
@@ -60,8 +62,9 @@ export const DELETE = async (_req: NextRequest, { params }: RouteContext) => {
   }
 
   try {
-    const id = Number(params.id);
-    await prisma.service.delete({ where: { id } });
+    const { id } = await params;
+    const parsedId = Number(id);
+    await prisma.service.delete({ where: { id: parsedId } });
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false });
