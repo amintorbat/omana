@@ -1,8 +1,8 @@
 import { headers } from "next/headers";
 
-const resolveBaseUrl = () => {
+const resolveBaseUrl = async () => {
   try {
-    const headerList = headers();
+    const headerList = await headers();
     const host = headerList.get("x-forwarded-host") ?? headerList.get("host");
     if (host) {
       const protocol = headerList.get("x-forwarded-proto") ?? "http";
@@ -21,7 +21,7 @@ const fetchCms = async <T>(
   revalidate = 60
 ): Promise<T> => {
   try {
-    const baseUrl = resolveBaseUrl();
+    const baseUrl = await resolveBaseUrl();
     const response = await fetch(`${baseUrl}${path}`, {
       next: { revalidate },
     });
