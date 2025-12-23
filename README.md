@@ -13,10 +13,14 @@ DATABASE_URL="file:./dev.db"
 CMS_ADMIN_EMAIL="admin@example.com"
 CMS_ADMIN_PASSWORD="change-me"
 CMS_SESSION_SECRET="replace-with-long-random-secret"
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+ADMIN_ENABLED="true"
 ```
 
 For production, set `CMS_ADMIN_PASSWORD_HASH` instead of `CMS_ADMIN_PASSWORD`
 and keep `CMS_SESSION_SECRET` long and random.
+Set `NEXT_PUBLIC_SITE_URL` in production (required for server-side CMS fetches).
+Admin access is disabled unless `ADMIN_ENABLED` is explicitly set to `true`.
 
 For production, set `DATABASE_URL` to your Postgres connection string.
 

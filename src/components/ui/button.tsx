@@ -10,11 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-oman-red text-white shadow-soft hover:-translate-y-0.5 hover:shadow-lg focus-visible:ring-oman-red",
+          "bg-accent text-white shadow-soft hover:-translate-y-0.5 hover:shadow-lg focus-visible:ring-accent",
         outline:
           "border border-white/40 bg-white/20 text-white backdrop-blur hover:bg-white/40 focus-visible:ring-white",
         subtle:
-          "bg-oman-surface text-oman-text shadow-subtle hover:-translate-y-0.5 focus-visible:ring-oman-green",
+          "bg-surface text-text shadow-subtle hover:-translate-y-0.5 focus-visible:ring-primary",
       },
     },
     defaultVariants: {

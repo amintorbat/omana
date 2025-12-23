@@ -8,6 +8,8 @@ type PostItem = {
   slug: string;
   excerpt: string;
   content: string;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
   status: "DRAFT" | "PUBLISHED";
   publishedAt: string | null;
   updatedAt: string;
@@ -18,6 +20,8 @@ const emptyForm: Omit<PostItem, "id" | "updatedAt"> = {
   slug: "",
   excerpt: "",
   content: "",
+  seoTitle: "",
+  seoDescription: "",
   status: "DRAFT",
   publishedAt: "",
 };
@@ -54,6 +58,8 @@ export default function AdminPostsPage() {
       slug: item.slug,
       excerpt: item.excerpt,
       content: item.content,
+      seoTitle: item.seoTitle ?? "",
+      seoDescription: item.seoDescription ?? "",
       status: item.status,
       publishedAt: item.publishedAt ? item.publishedAt.split("T")[0] : "",
     });
@@ -209,6 +215,29 @@ export default function AdminPostsPage() {
               }
               className="mt-2 min-h-[160px] w-full rounded-2xl border border-oman-border/80 bg-oman-bg px-4 py-3 text-oman-text"
               required
+            />
+          </label>
+          <label className="block text-sm text-oman-muted">
+            عنوان سئو (اختیاری)
+            <input
+              value={form.seoTitle ?? ""}
+              onChange={(event) =>
+                setForm((prev) => ({ ...prev, seoTitle: event.target.value }))
+              }
+              className="mt-2 w-full rounded-2xl border border-oman-border/80 bg-oman-bg px-4 py-3 text-oman-text"
+            />
+          </label>
+          <label className="block text-sm text-oman-muted">
+            توضیحات سئو (اختیاری)
+            <textarea
+              value={form.seoDescription ?? ""}
+              onChange={(event) =>
+                setForm((prev) => ({
+                  ...prev,
+                  seoDescription: event.target.value,
+                }))
+              }
+              className="mt-2 min-h-[90px] w-full rounded-2xl border border-oman-border/80 bg-oman-bg px-4 py-3 text-oman-text"
             />
           </label>
           <label className="block text-sm text-oman-muted">

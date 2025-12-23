@@ -35,10 +35,6 @@ export const Contact = ({
   content: ContactContent;
   settings: ContactSettings;
 }) => {
-  const whatsappHandle = settings.whatsappE164.replace("+", "");
-  const whatsappLink = whatsappHandle
-    ? `https://wa.me/${whatsappHandle}`
-    : "#contact";
   const phoneNumber = "+989308829926";
   const emailAddress = "torbatamin@gmail.com";
   const whatsappMessage =
@@ -48,7 +44,7 @@ export const Contact = ({
   )}`;
 
   return (
-    <section id="contact" className="bg-white py-20 sm:py-24 lg:py-28">
+    <section id="contact" className="bg-background py-20 sm:py-24 lg:py-28">
       <div className="container grid gap-12 md:grid-cols-2">
         <SectionHeading
           title={content.heading.title}
@@ -62,35 +58,35 @@ export const Contact = ({
           variants={fadeInUp}
         >
           <Card glow className="space-y-5">
-            <p className="text-sm font-medium text-oman-slate/70">
+            <p className="text-sm font-medium text-muted">
               {content.availability}
             </p>
-            <p className="text-xs text-oman-slate/60">{content.cta.helper}</p>
+            <p className="text-xs text-muted/70">{content.cta.helper}</p>
             <Button asChild className="w-full px-8 py-4 text-base">
               <Link href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 {content.cta.label}
               </Link>
             </Button>
-            <div className="grid gap-3 text-sm text-oman-slate/80">
+            <div className="grid gap-3 text-sm text-text">
               <Link
                 href={`tel:${phoneNumber}`}
-                className="flex items-center gap-3 text-oman-slate/80 hover:text-oman-green"
+                className="flex items-center gap-3 text-text hover:text-primary"
                 aria-label={`Call ${phoneNumber}`}
               >
-                <Phone className="text-oman-green" size={18} />
+                <Phone className="text-primary" size={18} />
                 {phoneNumber}
               </Link>
               <Link
                 href={`mailto:${emailAddress}`}
-                className="flex items-center gap-3 text-oman-slate/80 hover:text-oman-green"
+                className="flex items-center gap-3 text-text hover:text-primary"
                 aria-label={`Email ${emailAddress}`}
               >
-                <Mail size={18} />
+                <Mail className="text-primary" size={18} />
                 {emailAddress}
               </Link>
               {(settings.address || content.address) && (
-                <p className="flex items-center gap-3">
-                  <MapPin className="text-oman-red" size={18} />
+                <p className="flex items-center gap-3 text-text">
+                  <MapPin className="text-primary" size={18} />
                   {settings.address || content.address}
                 </p>
               )}

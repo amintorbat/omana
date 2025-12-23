@@ -90,6 +90,8 @@ export type PostDto = {
   slug: string;
   excerpt: string;
   content: string;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
   status: "DRAFT" | "PUBLISHED";
   publishedAt: string | null;
   updatedAt: string;

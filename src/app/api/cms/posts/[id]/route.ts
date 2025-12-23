@@ -45,6 +45,8 @@ export const PUT = async (req: NextRequest, { params }: RouteContext) => {
         slug: body.slug ?? "",
         excerpt: body.excerpt ?? "",
         content: body.content ?? "",
+        seoTitle: body.seoTitle ?? null,
+        seoDescription: body.seoDescription ?? null,
         status: body.status ?? "DRAFT",
         publishedAt: parsedPublishedAt,
       },

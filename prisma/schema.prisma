@@ -41,6 +41,8 @@ model Post {
   slug        String    @unique
   excerpt     String
   content     String
+  seoTitle    String?
+  seoDescription String?
   status      CmsStatus @default(DRAFT)
   publishedAt DateTime?
   updatedAt   DateTime  @updatedAt

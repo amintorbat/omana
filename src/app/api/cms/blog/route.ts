@@ -35,6 +35,8 @@ export const POST = async (req: NextRequest) => {
         slug: body.slug ?? "",
         excerpt: body.excerpt ?? "",
         content: body.content ?? "",
+        seoTitle: body.seoTitle ?? null,
+        seoDescription: body.seoDescription ?? null,
         status: body.status ?? "DRAFT",
         publishedAt: parsedPublishedAt,
       },

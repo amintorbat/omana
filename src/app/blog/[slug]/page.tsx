@@ -25,13 +25,17 @@ export const generateMetadata = async ({
       title: "مقاله یافت نشد | اومانا",
     };
   }
+  const seoTitle =
+    "seoTitle" in resolvedPost ? resolvedPost.seoTitle ?? "" : "";
+  const seoDescription =
+    "seoDescription" in resolvedPost ? resolvedPost.seoDescription ?? "" : "";
 
   return {
-    title: `${resolvedPost.title} | اومانا`,
-    description: resolvedPost.excerpt,
+    title: seoTitle ? `${seoTitle} | اومانا` : `${resolvedPost.title} | اومانا`,
+    description: seoDescription || resolvedPost.excerpt,
     openGraph: {
-      title: resolvedPost.title,
-      description: resolvedPost.excerpt,
+      title: seoTitle || resolvedPost.title,
+      description: seoDescription || resolvedPost.excerpt,
       type: "article",
     },
   };

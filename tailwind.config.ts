@@ -17,6 +17,13 @@ const config: Config = {
     },
     extend: {
       colors: {
+        primary: "rgb(var(--om-green-rgb) / <alpha-value>)",
+        accent: "rgb(var(--om-red-rgb) / <alpha-value>)",
+        background: "rgb(var(--om-bg-rgb) / <alpha-value>)",
+        surface: "rgb(var(--om-surface-rgb) / <alpha-value>)",
+        text: "rgb(var(--om-text-rgb) / <alpha-value>)",
+        muted: "rgb(var(--om-muted-rgb) / <alpha-value>)",
+        border: "rgb(var(--om-border-rgb) / <alpha-value>)",
         oman: {
           red: "rgb(var(--om-red-rgb) / <alpha-value>)",
           green: "rgb(var(--om-green-rgb) / <alpha-value>)",

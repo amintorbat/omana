@@ -50,7 +50,7 @@ export const Services = ({
   const resolvedHeading = heading ?? servicesContent.heading;
 
   return (
-    <section id="services" className="bg-white py-20 sm:py-24 lg:py-28">
+    <section id="services" className="bg-background py-20 sm:py-24 lg:py-28">
       <div className="container space-y-14">
         <SectionHeading
           eyebrow={resolvedHeading.eyebrow}
@@ -68,18 +68,18 @@ export const Services = ({
             const Icon = icons[iconKeys[index % iconKeys.length]];
             return (
               <motion.div key={service.slug} variants={fadeInUp}>
-                <Card className="h-full space-y-4 border-white/60 bg-white/90">
-                  <div className="flex items-center gap-4 text-oman-red">
+                <Card className="h-full space-y-4 border-border/60 bg-surface">
+                  <div className="flex items-center gap-4 text-primary">
                     {Icon && (
-                      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-oman-cream to-white text-oman-red">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-background to-surface text-primary">
                         <Icon />
                       </span>
                     )}
-                    <h3 className="text-xl font-bold text-oman-slate">
+                    <h3 className="text-xl font-bold text-text">
                       {service.title}
                     </h3>
                   </div>
-                  <p className="text-sm leading-7 text-oman-slate/80 sm:text-base">
+                  <p className="text-sm leading-7 text-muted sm:text-base">
                     {service.excerpt}
                   </p>
                 </Card>

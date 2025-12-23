@@ -31,7 +31,7 @@ export const FAQ = ({
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section id="faq" className="bg-oman-cream/40 py-20 sm:py-24 lg:py-28">
+    <section id="faq" className="bg-background py-20 sm:py-24 lg:py-28">
       <div className="container space-y-12">
         <SectionHeading
           align="center"
@@ -45,7 +45,7 @@ export const FAQ = ({
             return (
               <div
                 key={`${item.question}-${index}`}
-                className="rounded-3xl border border-white/70 bg-white/95 px-6 py-4 shadow-subtle transition-all duration-300 hover:border-oman-green/30"
+                className="rounded-3xl border border-border/70 bg-surface px-6 py-4 shadow-subtle transition-all duration-300 hover:border-primary/30"
               >
                 <button
                   className="flex w-full items-center justify-between text-right"
@@ -54,12 +54,12 @@ export const FAQ = ({
                   }
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base font-semibold text-oman-slate">
+                  <span className="text-base font-semibold text-text">
                     {item.question}
                   </span>
                   <ChevronDown
                     className={`transition ${
-                      isOpen ? "rotate-180 text-oman-red" : "text-oman-slate/40"
+                      isOpen ? "rotate-180 text-accent" : "text-muted/50"
                     }`}
                   />
                 </button>
@@ -70,7 +70,7 @@ export const FAQ = ({
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="mt-3 overflow-hidden text-sm leading-7 text-oman-slate/80 sm:text-base"
+                      className="mt-3 overflow-hidden text-sm leading-7 text-muted sm:text-base"
                     >
                       {item.answer}
                     </motion.p>

@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import { verifySessionToken } from "@/lib/cms-session";
 
-export const isAdminEnabled = () => process.env.ADMIN_ENABLED !== "false";
+export const isAdminEnabled = () => process.env.ADMIN_ENABLED === "true";
 
 export const getSessionSecret = () =>
   process.env.CMS_SESSION_SECRET ?? process.env.CMS_SECRET ?? "";
