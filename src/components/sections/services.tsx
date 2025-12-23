@@ -67,10 +67,7 @@ export const Services = ({
           {resolvedItems.map((service, index) => {
             const Icon = icons[iconKeys[index % iconKeys.length]];
             return (
-              <motion.div
-                key={service.id ?? service.slug}
-                variants={fadeInUp}
-              >
+              <motion.div key={service.slug} variants={fadeInUp}>
                 <Card className="h-full space-y-4 border-white/60 bg-white/90">
                   <div className="flex items-center gap-4 text-oman-red">
                     {Icon && (
