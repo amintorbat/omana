@@ -15,7 +15,7 @@ type ContactContent = {
     description: string;
   };
   availability: string;
-  address: string;
+  address?: string;
   cta: {
     label: string;
     helper: string;
