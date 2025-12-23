@@ -41,11 +41,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   if (!resolvedService) {
     notFound();
   }
-  const body =
-    resolvedService.body ??
-    ("description" in resolvedService ? resolvedService.description : undefined) ??
-    resolvedService.excerpt ??
-    "";
+  const body = resolvedService.body ?? resolvedService.excerpt ?? "";
 
   return (
     <main className="bg-oman-bg py-20 sm:py-24 lg:py-28">
@@ -61,11 +57,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             eyebrow="SERVICE"
             title={resolvedService.title}
             description={
-              resolvedService.excerpt ??
-              ("description" in resolvedService
-                ? resolvedService.description
-                : undefined) ??
-              ""
+              resolvedService.excerpt ?? ""
             }
           />
         </div>
