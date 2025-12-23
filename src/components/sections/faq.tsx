@@ -8,7 +8,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { getFaqContent } from "@/lib/content";
 
 type FaqItem = {
-  id?: number;
   question: string;
   answer: string;
 };
@@ -45,7 +44,7 @@ export const FAQ = ({
             const isOpen = index === activeIndex;
             return (
               <div
-                key={item.id ?? item.question}
+                key={`${item.question}-${index}`}
                 className="rounded-3xl border border-white/70 bg-white/95 px-6 py-4 shadow-subtle transition-all duration-300 hover:border-oman-green/30"
               >
                 <button
