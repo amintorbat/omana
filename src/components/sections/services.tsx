@@ -14,7 +14,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { getServicesContent } from "@/lib/content";
 import { fadeInStagger, fadeInUp } from "@/lib/motion";
 
-const servicesContent = getServicesContent();
 const icons: Record<string, LucideIcon> = {
   Plane,
   Briefcase,
@@ -22,14 +21,41 @@ const icons: Record<string, LucideIcon> = {
   LineChart,
 };
 
-export const Services = () => {
+type ServiceItem = {
+  id?: number;
+  title: string;
+  slug: string;
+  excerpt: string;
+  body: string;
+};
+
+const iconKeys = ["Plane", "Briefcase", "ScrollText", "LineChart"];
+
+type ServicesHeading = {
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
+export const Services = ({
+  items,
+  heading,
+}: {
+  items?: ServiceItem[];
+  heading?: ServicesHeading;
+}) => {
+  const servicesContent = getServicesContent();
+  const resolvedItems =
+    items && items.length > 0 ? items : servicesContent.items;
+  const resolvedHeading = heading ?? servicesContent.heading;
+
   return (
     <section id="services" className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="container space-y-14">
         <SectionHeading
-          eyebrow={servicesContent.heading.eyebrow}
-          title={servicesContent.heading.title}
-          description={servicesContent.heading.description}
+          eyebrow={resolvedHeading.eyebrow}
+          title={resolvedHeading.title}
+          description={resolvedHeading.description}
         />
         <motion.div
           className="grid gap-6 md:grid-cols-2"
@@ -38,10 +64,13 @@ export const Services = () => {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInStagger}
         >
-          {servicesContent.items.map((service) => {
-            const Icon = icons[service.icon];
+          {resolvedItems.map((service, index) => {
+            const Icon = icons[iconKeys[index % iconKeys.length]];
             return (
-              <motion.div key={service.title} variants={fadeInUp}>
+              <motion.div
+                key={service.id ?? service.slug}
+                variants={fadeInUp}
+              >
                 <Card className="h-full space-y-4 border-white/60 bg-white/90">
                   <div className="flex items-center gap-4 text-oman-red">
                     {Icon && (
@@ -54,7 +83,7 @@ export const Services = () => {
                     </h3>
                   </div>
                   <p className="text-sm leading-7 text-oman-slate/80 sm:text-base">
-                    {service.description}
+                    {service.excerpt}
                   </p>
                 </Card>
               </motion.div>

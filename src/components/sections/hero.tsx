@@ -5,12 +5,18 @@ import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { getHeroContent } from "@/lib/content";
 import { fadeInStagger, fadeInUp } from "@/lib/motion";
+
+import { getHeroContent } from "@/lib/content";
 
 const heroContent = getHeroContent();
 
-export const Hero = () => {
+type HeroProps = {
+  heroTitle?: string;
+  heroSubtitle?: string;
+};
+
+export const Hero = ({ heroTitle, heroSubtitle }: HeroProps) => {
   return (
     <section
       id="hero"
@@ -33,13 +39,13 @@ export const Hero = () => {
             variants={fadeInUp}
             className="text-4xl font-black leading-tight text-oman-slate sm:text-5xl lg:text-6xl"
           >
-            {heroContent.title}
+            {heroTitle || heroContent.title}
           </motion.h1>
           <motion.p
             variants={fadeInUp}
             className="text-base leading-relaxed text-oman-slate/80 sm:text-lg lg:max-w-xl"
           >
-            {heroContent.description}
+            {heroSubtitle || heroContent.description}
           </motion.p>
           <motion.div
             variants={fadeInUp}

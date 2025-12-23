@@ -7,9 +7,28 @@ import { ChevronDown } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getFaqContent } from "@/lib/content";
 
-const faqContent = getFaqContent();
+type FaqItem = {
+  id?: number;
+  question: string;
+  answer: string;
+};
 
-export const FAQ = () => {
+type FaqHeading = {
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
+export const FAQ = ({
+  items,
+  heading,
+}: {
+  items?: FaqItem[];
+  heading?: FaqHeading;
+}) => {
+  const faqContent = getFaqContent();
+  const resolvedItems = items && items.length > 0 ? items : faqContent.items;
+  const resolvedHeading = heading ?? faqContent.heading;
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -17,16 +36,16 @@ export const FAQ = () => {
       <div className="container space-y-12">
         <SectionHeading
           align="center"
-          eyebrow={faqContent.heading.eyebrow}
-          title={faqContent.heading.title}
-          description={faqContent.heading.description}
+          eyebrow={resolvedHeading.eyebrow}
+          title={resolvedHeading.title}
+          description={resolvedHeading.description}
         />
         <div className="space-y-4">
-          {faqContent.items.map((item, index) => {
+          {resolvedItems.map((item, index) => {
             const isOpen = index === activeIndex;
             return (
               <div
-                key={item.question}
+                key={item.id ?? item.question}
                 className="rounded-3xl border border-white/70 bg-white/95 px-6 py-4 shadow-subtle transition-all duration-300 hover:border-oman-green/30"
               >
                 <button

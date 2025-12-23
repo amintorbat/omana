@@ -14,7 +14,7 @@ const buttonVariants = cva(
         outline:
           "border border-white/40 bg-white/20 text-white backdrop-blur hover:bg-white/40 focus-visible:ring-white",
         subtle:
-          "bg-white text-oman-slate shadow-subtle hover:-translate-y-0.5 focus-visible:ring-oman-green",
+          "bg-oman-surface text-oman-text shadow-subtle hover:-translate-y-0.5 focus-visible:ring-oman-green",
       },
     },
     defaultVariants: {

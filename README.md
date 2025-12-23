@@ -4,6 +4,37 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 [Torbate Esfahani Agency](https://torbatesfahaniagency.ir)
 
+## CMS Setup
+
+1) Create `.env` with:
+
+```
+DATABASE_URL="file:./dev.db"
+CMS_ADMIN_EMAIL="admin@example.com"
+CMS_ADMIN_PASSWORD="change-me"
+CMS_SESSION_SECRET="replace-with-long-random-secret"
+```
+
+For production, set `CMS_ADMIN_PASSWORD_HASH` instead of `CMS_ADMIN_PASSWORD`
+and keep `CMS_SESSION_SECRET` long and random.
+
+For production, set `DATABASE_URL` to your Postgres connection string.
+
+2) Initialize Prisma:
+
+```
+npx prisma generate
+npx prisma migrate dev --name init
+```
+
+3) Run the app:
+
+```
+npm run dev
+```
+
+Admin panel: `/admin`
+
 ## Getting Started
 
 First, run the development server:

@@ -15,9 +15,9 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur border-b border-white/60">
+    <header className="sticky top-0 z-50 w-full border-b border-oman-border/70 bg-oman-surface/90 backdrop-blur">
       <div className="container flex items-center justify-between py-4">
-        <Link href="#hero" className="text-lg font-black tracking-tight text-oman-slate">
+        <Link href="/" className="text-lg font-black tracking-tight text-oman-text">
           {site.brand.name}
         </Link>
         <nav className="hidden items-center gap-8 lg:flex">
@@ -25,7 +25,7 @@ export const Navbar = () => {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-oman-slate/80 transition hover:text-oman-green"
+              className="text-sm font-medium text-oman-text/80 transition hover:text-oman-green"
             >
               {item.label}
             </Link>
@@ -37,7 +37,7 @@ export const Navbar = () => {
           </Button>
         </div>
         <button
-          className="inline-flex items-center justify-center rounded-full border border-oman-slate/10 p-2 text-oman-slate/80 lg:hidden"
+          className="inline-flex items-center justify-center rounded-full border border-oman-border/80 p-2 text-oman-text/80 lg:hidden"
           onClick={() => setOpen((prev) => !prev)}
           aria-label="باز کردن منو"
         >
@@ -46,7 +46,7 @@ export const Navbar = () => {
       </div>
       <div
         className={cn(
-          "lg:hidden bg-white transition grid overflow-hidden",
+          "lg:hidden grid overflow-hidden bg-oman-surface transition",
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         )}
       >
@@ -56,7 +56,7 @@ export const Navbar = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-base font-medium text-oman-slate/80"
+                className="text-base font-medium text-oman-text/80"
                 onClick={() => setOpen(false)}
               >
                 {item.label}

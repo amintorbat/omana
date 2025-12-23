@@ -61,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={`${vazirmatn.variable} antialiased text-oman-slate`}
+        className={`${vazirmatn.variable} antialiased text-oman-text`}
         suppressHydrationWarning
       >
         <div className="relative flex min-h-screen flex-col">
