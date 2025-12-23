@@ -29,7 +29,7 @@ export const generateMetadata = async ({
 
   return {
     title: `${resolvedService.title} | اومانا`,
-    description: resolvedService.excerpt ?? resolvedService.description ?? "",
+    description: resolvedService.excerpt ?? resolvedService.body ?? "",
   };
 };
 
@@ -43,7 +43,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   }
   const body =
     resolvedService.body ??
-    resolvedService.description ??
+    ("description" in resolvedService ? resolvedService.description : undefined) ??
     resolvedService.excerpt ??
     "";
 
@@ -60,7 +60,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
           <SectionHeading
             eyebrow="SERVICE"
             title={resolvedService.title}
-            description={resolvedService.excerpt ?? resolvedService.description ?? ""}
+            description={
+              resolvedService.excerpt ??
+              ("description" in resolvedService
+                ? resolvedService.description
+                : undefined) ??
+              ""
+            }
           />
         </div>
 
